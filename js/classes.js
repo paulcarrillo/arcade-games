@@ -15,7 +15,7 @@ class Entity {
   // Checking for a collision between the player and the enemy
   checkCollisions(playerOrEnemy) {
     if (this.y === playerOrEnemy.y) {
-      if (this.x >= playerOrEnemy.x - 0.5 && this.x <= playerOrEnemy.x + 0.5) {
+      if (this.x >= playerOrEnemy.x - 0.7 && this.x <= playerOrEnemy.x + 0.7) {
         return true;
       }
     } else {
@@ -35,6 +35,7 @@ class Player extends Entity {
     super();
     this.sprite += "char-boy.png";
     this.moving = false;
+    this.win = false;
     this.dead = false;
     this.lives = 5;
   }
@@ -65,9 +66,19 @@ class Player extends Entity {
     }
   }
 
+  checkWin(dt) {
+    super.update();
+    if(this.isOutOfBoundsY && !this.moving && !this.win) {
+      alert("Congratulations you've won!");
+      this.win = true;
+
+      location.reload();
+    }
+  }
+
   render() {
     super.render();
-    //  this.moving = false;
+    this.moving = false;
   }
 
   // Controls user input to move player
