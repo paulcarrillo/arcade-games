@@ -66,7 +66,7 @@ class Player extends Entity {
     }
   }
 
-  checkWin(dt) {
+/*  checkWin(dt) {
     super.update();
     if(this.isOutOfBoundsY && !this.moving && !this.win) {
       alert("Congratulations you've won!");
@@ -75,6 +75,7 @@ class Player extends Entity {
       location.reload();
     }
   }
+*/
 
   render() {
     super.render();
